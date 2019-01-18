@@ -86,7 +86,7 @@ class BurgerBuilder extends Component {
 
   purchaseContinueHandler = () => {
     //alert('You continue!');
-    this.setState({loading: true});
+    /*this.setState({loading: true});
     const order = {
       ingredients: this.state.ingredients,
       price: this.state.totalPrice,
@@ -107,7 +107,8 @@ class BurgerBuilder extends Component {
       })
       .catch(error => {
         this.setState({loading: false, purchasing: false});
-      });
+      });*/
+      this.props.history.push('/checkout');
   }
 
   render () {
