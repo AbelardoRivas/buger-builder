@@ -7,11 +7,57 @@ import Input from './../../../components/UI/Input/Input';
 
 class ContactData extends Component {
   state = {
-    name: '',
-    email: '',
-    address: {
-      street: '',
-      postalCode: ''
+    orderForm: {
+      name: {
+        elemtType: 'input',
+        elemtConfig: {
+          type: 'text',
+          placeholder: 'Your Name'
+        },
+        value: ''
+      },
+      street: {
+        elemtType: 'input',
+        elemtConfig: {
+          type: 'text',
+          placeholder: 'Street'
+        },
+        value: ''
+      },
+      zipCode: {
+        elemtType: 'input',
+        elemtConfig: {
+          type: 'text',
+          placeholder: 'ZIP Code'
+        },
+        value: ''
+      },
+      country: {
+        elemtType: 'input',
+        elemtConfig: {
+          type: 'text',
+          placeholder: 'Country'
+        },
+        value: ''
+      },
+      email: {
+        elemtType: 'input',
+        elemtConfig: {
+          type: 'email',
+          placeholder: 'Your E-Mail'
+        },
+        value: ''
+      },
+      deliveryMethod: {
+        elemtType: 'select',
+        elemtConfig: {
+          options: [
+            {value: 'fastest', displayValue: 'Fastest'},
+            {value: 'cheapest', displayValue: 'Cheapest'}
+          ]
+        },
+        value: ''
+      }
     },
     loading: false
   }
@@ -21,17 +67,7 @@ class ContactData extends Component {
     this.setState({loading: true});
     const order = {
       ingredients: this.props.ingredients,
-      price: this.props.price,
-      customer: {
-        name: 'Abelardo',
-        address: {
-          street: 'Teststreet 1',
-          zipCode: '264813',
-          country: 'Venezuela'
-        },
-        email: 'test@test.com'
-      },
-      deliveryMethod: 'fastest'
+      price: this.props.price
     }
     axios.post('/orders.json', order)
       .then(response => {
@@ -46,7 +82,7 @@ class ContactData extends Component {
   render () {
     let form = (
       <form>
-        <Input inputtype="input" type="text" name="name" placeholder="Your name" />
+        <Input elemtType="..." elemtConfig="..." value="..." />
         <Input inputtype="input" type="email" name="email" placeholder="Your mail" />
         <Input inputtype="input" type="text" name="street" placeholder="Street" />
         <Input inputtype="input" type="text" name="postal" placeholder="Postal Code" />
